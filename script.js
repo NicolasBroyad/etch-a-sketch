@@ -2,22 +2,30 @@ let rowContainer;
 let cell;
 let container = document.querySelector(".container");
 
-for(i=1; i<=16; i++){
-    rowContainer = document.createElement("div");
-    rowContainer.style.display = "flex";
-    rowContainer.style.justifyContent = "center";
-    container.appendChild(rowContainer);
-    for(j=1; j<=16; j++){
-        cell = document.createElement("div");
-        cell.style.backgroundColor = "green";
-        cell.style.height = "40px"
-        cell.style.width = "40px"
-        let cellNumber = 16*i+j;
-        cell.id = `cell${cellNumber}`;
-        cell.classList.add("cell");
-        rowContainer.appendChild(cell);
+let rows = 16;
+let columns = 16;
+
+
+function createGrid(rows, columns){
+    for(i=1; i<=rows; i++){
+        rowContainer = document.createElement("div");
+        rowContainer.style.display = "flex";
+        rowContainer.style.justifyContent = "center";
+        container.appendChild(rowContainer);
+        for(j=1; j<=columns; j++){
+            cell = document.createElement("div");
+            cell.style.backgroundColor = "green";
+            cell.style.height = "40px"
+            cell.style.width = "40px"
+            let cellNumber = columns*i+j;
+            cell.id = `cell${cellNumber}`;
+            cell.classList.add("cell");
+            rowContainer.appendChild(cell);
+        }
     }
 }
+
+createGrid(rows,columns);
 
 container.addEventListener("mouseover", function(event){
     if(event.target.className === "cell"){
